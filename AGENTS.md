@@ -59,6 +59,14 @@ Before doing anything else:
 The Programme Manager writes; you build. If a content draft is unclear or unpublishable
 as-is, comment on the PR requesting clarification — don't rewrite the content yourself.
 
+## Documentation Rules
+
+- **Implementing a design?** The same PR must: (1) update the relevant authoritative doc
+  to reflect what was built — present tense, no future-tense sections, and (2) update the
+  design doc status to `Implemented`. These are not optional follow-ups.
+- Authoritative docs (`docs/`) describe only what is implemented. No `[planned]` blocks.
+- Design proposals live in `design/`. See `idea/design/README.md` for the convention.
+
 ## Safety Rules
 
 - No direct commits to `main` — all changes via PRs
