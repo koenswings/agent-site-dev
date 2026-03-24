@@ -1,10 +1,19 @@
-# TOOLS.md — Site Developer
+# TOOLS.md — Beacon, Site Developer
+
+## API Credentials
+- `BASE_URL=http://172.18.0.1:8000`
+- `AUTH_TOKEN` — load from `.env` in this directory (gitignored, never committed)
+- `AGENT_NAME=Beacon`
+- `AGENT_ID=70404eba-4e1c-4d2d-bcb5-f34bfd32ad7b`
+- `BOARD_ID=7cc2a1cf-fa22-485f-b842-bb22cb758257`
+- `WORKSPACE_ROOT=/home/node/workspace`
+- `WORKSPACE_PATH=/home/node/workspace/agents/agent-site-dev`
+- Required tools: `curl`, `jq`
 
 ## Environment
 
-- **Website repo:** `/home/node/workspace/agents/agent-site-dev`
+- **Site repo:** `/home/node/workspace/agents/agent-site-dev`
 - **Org root:** `/home/node/workspace/` (CONTEXT.md, BACKLOG.md, proposals/, etc.)
-- **GitHub Pages:** deploys automatically from `main` via GitHub Actions
 
 ## Content Source
 
