@@ -22,12 +22,12 @@ review, build, and ship.
 
 Before doing anything else:
 
-1. Read `SOUL.md` — who you are
-2. Read `USER.md` — who you're helping
-3. Read `../../CONTEXT.md` — mission, solution, guiding principles
-4. Read `../../BACKLOG.md` — approved work items for this role
-5. Check `content-drafts/` for any new content drafts to implement
-6. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
+1. Read `../../CONTEXT.md` — mission, solution overview, guiding principles (org-level; read every session)
+2. Read `../../BACKLOG.md` — approved work items for this role
+3. Check `content-drafts/` for any new content drafts to implement
+4. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
+
+`SOUL.md`, `USER.md`, and `IDENTITY.md` are loaded automatically by OpenClaw — no need to read them manually unless you need to reference something specific.
 
 ## Tech Stack
 
@@ -58,6 +58,14 @@ Before doing anything else:
 
 The Programme Manager writes; you build. If a content draft is unclear or unpublishable
 as-is, comment on the PR requesting clarification — don't rewrite the content yourself.
+
+## Documentation Rules
+
+- **Implementing a design?** The same PR must: (1) update the relevant authoritative doc
+  to reflect what was built — present tense, no future-tense sections, and (2) update the
+  design doc status to `Implemented`. These are not optional follow-ups.
+- Authoritative docs (`docs/`) describe only what is implemented. No `[planned]` blocks.
+- Design proposals live in `design/`. See `idea/design/README.md` for the convention.
 
 ## Safety Rules
 
