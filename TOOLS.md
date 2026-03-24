@@ -15,19 +15,45 @@
 - **Site repo:** `/home/node/workspace/agents/agent-site-dev`
 - **Org root:** `/home/node/workspace/` (CONTEXT.md, BACKLOG.md, proposals/, etc.)
 
-## OpenAPI refresh (run before API-heavy work)
+## Content Source
 
+- Website content drafts from Programme Manager: `content-drafts/` in this repo
+- Programme Manager opens PRs with draft files; pick up, implement, open build PR
+
+## Deployment
+
+- Push to `main` (via merged PR) → GitHub Actions builds → GitHub Pages updates
+- Check Actions tab on GitHub to verify deploy status
+
+## Notes
+
+_(Add Astro/Hugo version details, plugin notes, or deployment quirks here as discovered.)_
+
+## GitHub Push & PR
+
+`gh` is not available in the sandbox. Use `git` + `curl` with `GITHUB_TOKEN` from `.env`.
+
+### Push a branch
 ```bash
-mkdir -p api
-curl -fsS "http://172.18.0.1:8000/openapi.json" -o api/openapi.json
-jq -r '
-  .paths | to_entries[] as $p
-  | $p.value | to_entries[]
-  | select((.value.tags // []) | index("agent-lead"))
-  | "\(.key|ascii_upcase)\t\($p.path)\t\(.value.operationId // "-")\t\(.value["x-llm-intent"] // "-")\t\(.value["x-when-to-use"] // [] | join(" | "))\t\(.value["x-routing-policy"] // [] | join(" | "))"
-' api/openapi.json | sort > api/agent-lead-operations.tsv
+source .env
+git remote set-url origin https://koenswings:${GITHUB_TOKEN}@github.com/koenswings/agent-site-dev.git
+git push origin BRANCH_NAME
+git remote set-url origin https://github.com/koenswings/agent-site-dev.git
 ```
 
-## API discovery policy
-- Use operations tagged `agent-lead`.
-- Prefer operations whose `x-llm-intent` and `x-when-to-use` match the current objective.
+### Open a PR
+```bash
+source .env
+curl -s -X POST "https://api.github.com/repos/koenswings/agent-site-dev/pulls" \
+  -H "Authorization: token ${GITHUB_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -d "{
+    \"title\": \"PR TITLE\",
+    \"head\": \"BRANCH_NAME\",
+    \"base\": \"main\",
+    \"body\": \"PR description\"
+  }" | python3 -c "import sys,json; print(json.load(sys.stdin).get('html_url','error'))"
+```
+
+Replace `agent-site-dev` and `BRANCH_NAME` with the actual values for your repo.
+`GITHUB_TOKEN` must be present in `.env` (gitignored, never committed).
