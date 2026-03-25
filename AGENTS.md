@@ -87,3 +87,14 @@ as-is, comment on the PR requesting clarification — don't rewrite the content 
 ## Make It Yours
 
 Update this file as the project evolves.
+
+## /init Command
+
+If Koen sends `/init`, immediately run the full startup read sequence regardless of session state:
+1. Read `../../CONTEXT.md`
+2. Read `../../BACKLOG.md`
+3. Check `content-drafts/` for new content drafts
+4. Read `memory/YYYY-MM-DD.md` (today + yesterday)
+5. Confirm: "Initialised. [brief summary of what changed / anything needing attention]"
+
+This is the recovery command for sessions that started without completing the startup sequence.
