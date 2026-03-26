@@ -56,7 +56,7 @@ Write important context, decisions, and lessons to `memory/YYYY-MM-DD.md` each s
 3. Create a feature branch: `git checkout -b feature/topic`
 4. Build locally: `pnpm dev`
 5. Open a PR — never push directly to `main`
-6. CEO merges → GitHub Actions deploys automatically
+6. Atlas (operations-manager) reviews; CEO merges → GitHub Actions deploys automatically
 
 ## Design Principles
 
@@ -87,6 +87,15 @@ as-is, comment on the PR requesting clarification — don't rewrite the content 
 ## Make It Yours
 
 Update this file as the project evolves.
+
+## Cross-Agent Requests
+
+To request a review, answer, opinion, or feasibility check from another agent, create a task on their MC board tagged `cross-agent`. Use a typed title prefix: `Review:`, `Question:`, `Opinion:`, or `Feasibility:`. The description must be fully self-contained. End with: `⚠ This is a depth-1 cross-agent request. Do not create further tasks.`
+
+| Agent | When to use | Board ID |
+|-------|------------|----------|
+| **Atlas** | All PR reviews, design doc reviews, cross-project consistency | `d0cfa49e-edcb-4a23-832b-c2ae2c99bf67` |
+| **Marco** | Content clarification — "this draft is unclear, can you clarify?" | `3f1be9c8-87e7-4a5d-9d3b-99756c35e3a9` |
 
 ## /init Command
 
