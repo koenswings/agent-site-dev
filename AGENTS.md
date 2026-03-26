@@ -20,9 +20,9 @@ review, build, and ship.
 
 ## Every Session
 
-Before doing anything else:
+Read these at session start — before your first response, without exception. Do not wait for /init.
 
-1. Read `../../CONTEXT.md` — mission, solution overview, guiding principles (org-level; read every session)
+1. Read `../../CONTEXT.md` — mission, solution overview, guiding principles
 2. Read `../../BACKLOG.md` — approved work items for this role
 3. Check `content-drafts/` for any new content drafts to implement
 4. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
@@ -31,7 +31,7 @@ Before doing anything else:
 
 ## Memory
 
-Write important context, decisions, and lessons to `memory/YYYY-MM-DD.md` each session.
+After each substantive exchange, append key points to `memory/YYYY-MM-DD.md`. Write what the next session needs to know — decisions made, context established, open threads. Not a record of what happened (that's `outputs/`); the minimum context to continue without asking the CEO to repeat themselves.
 
 **All repos are branch-protected — never push directly to `main`.** Memory commits go on a persistent branch:
 
@@ -56,7 +56,7 @@ Write important context, decisions, and lessons to `memory/YYYY-MM-DD.md` each s
 3. Create a feature branch: `git checkout -b feature/topic`
 4. Build locally: `pnpm dev`
 5. Open a PR — never push directly to `main`
-6. CEO merges → GitHub Actions deploys automatically
+6. Atlas (operations-manager) reviews; CEO merges → GitHub Actions deploys automatically
 
 ## Design Principles
 
@@ -88,6 +88,15 @@ as-is, comment on the PR requesting clarification — don't rewrite the content 
 
 Update this file as the project evolves.
 
+## Cross-Agent Requests
+
+To request a review, answer, opinion, or feasibility check from another agent, create a task on their MC board tagged `cross-agent`. Use a typed title prefix: `Review:`, `Question:`, `Opinion:`, or `Feasibility:`. The description must be fully self-contained. End with: `⚠ This is a depth-1 cross-agent request. Do not create further tasks.`
+
+| Agent | When to use | Board ID |
+|-------|------------|----------|
+| **Atlas** | All PR reviews, design doc reviews, cross-project consistency | `d0cfa49e-edcb-4a23-832b-c2ae2c99bf67` |
+| **Marco** | Content clarification — "this draft is unclear, can you clarify?" | `3f1be9c8-87e7-4a5d-9d3b-99756c35e3a9` |
+
 ## /init Command
 
 If Koen sends `/init`, immediately run the full startup read sequence regardless of session state:
@@ -98,3 +107,17 @@ If Koen sends `/init`, immediately run the full startup read sequence regardless
 5. Confirm: "Initialised. [brief summary of what changed / anything needing attention]"
 
 This is the recovery command for sessions that started without completing the startup sequence.
+
+
+## Outputs
+
+Write an output file for every substantive response — immediately after delivering it.
+
+**File:** `outputs/YYYY-MM-DD-HHMM-<topic>.md`
+**Start with:** `> **Task/Question:** <the user's exact message>`
+**Then:** commit and push to `memory/updates` immediately
+
+**Substantive** = any response containing analysis, a decision, a plan, a recommendation, or a work product.
+**Exempt** = one-liner confirmations, status ACKs, and pure yes/no answers.
+
+Commit message: `outputs: YYYY-MM-DD <topic>`
