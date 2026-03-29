@@ -1,7 +1,7 @@
 # TOOLS.md — Beacon, Site Developer
 
 ## API Credentials
-- `BASE_URL=http://172.18.0.1:8000`
+- `BASE_URL=http://mission-control-backend:8000`
 - `AUTH_TOKEN` — load from `.env` in this directory (gitignored, never committed)
 - `AGENT_NAME=Beacon`
 - `AGENT_ID=70404eba-4e1c-4d2d-bcb5-f34bfd32ad7b`
@@ -9,6 +9,10 @@
 - `WORKSPACE_ROOT=/home/node/workspace`
 - `WORKSPACE_PATH=/home/node/workspace/agents/agent-site-dev`
 - Required tools: `curl`, `jq`
+
+See the **mc-api** shared skill for OpenAPI refresh, discovery policy, and usage examples:
+`/home/node/workspace/skills/mc-api/SKILL.md`
+
 
 ## Environment
 

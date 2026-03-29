@@ -23,9 +23,14 @@ review, build, and ship.
 Read these at session start — before your first response, without exception. Do not wait for /init.
 
 1. Read `../../CONTEXT.md` — mission, solution overview, guiding principles
-2. Read `../../BACKLOG.md` — approved work items for this role
-3. Check `content-drafts/` for any new content drafts to implement
-4. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
+2. Read `../../design/INDEX.md` — index of all org-level design docs
+3. Read `../../docs/INDEX.md` — index of all org-level authoritative docs
+4. Read `../../proposals/INDEX.md` — index of all proposals
+5. Read `../../BACKLOG.md` — approved work items for this role
+6. Read `design/INDEX.md` — index of site-local design docs
+7. Read `docs/INDEX.md` — index of site-local authoritative docs
+8. Read `../../standups/LATEST.md` — latest org standup (skip gracefully if absent)
+9. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 
 `SOUL.md`, `USER.md`, and `IDENTITY.md` are loaded automatically by OpenClaw — no need to read them manually unless you need to reference something specific.
 
@@ -52,7 +57,7 @@ After each substantive exchange, append key points to `memory/YYYY-MM-DD.md`. Wr
 ## Development Workflow
 
 1. Check `../../BACKLOG.md` for approved work
-2. Check `content-drafts/` for content from the Programme Manager
+2. When Marco has content ready, he opens a cross-agent task — pick it up from your MC board; content lives in `content-drafts/`
 3. Create a feature branch: `git checkout -b feature/topic`
 4. Build locally: `pnpm dev`
 5. Open a PR — never push directly to `main`
@@ -90,7 +95,22 @@ Update this file as the project evolves.
 
 ## Cross-Agent Requests
 
-To request a review, answer, opinion, or feasibility check from another agent, create a task on their MC board tagged `cross-agent`. Use a typed title prefix: `Review:`, `Question:`, `Opinion:`, or `Feasibility:`. The description must be fully self-contained. End with: `⚠ This is a depth-1 cross-agent request. Do not create further tasks.`
+To request a review, answer, opinion, or feasibility check from another agent, create a task on their MC board:
+- **Title:** `[From <YourName>] <Type>: <short description>` — the `[From X]` prefix is mandatory; it is the primary identification signal visible on the Kanban board
+- **Type:** `Review` | `Question` | `Opinion` | `Feasibility`
+- **Tag:** `cross-agent`
+- **Description** must open with:
+  ```
+  **From:** <YourName> <emoji>
+  **Type:** <type>
+  **Date:** YYYY-MM-DD
+
+  ---
+
+  <fully self-contained body: what to do, where to find it, what to respond with>
+
+  ⚠ Depth-1 cross-agent task. Do not create further tasks.
+  ```
 
 | Agent | When to use | Board ID |
 |-------|------------|----------|
@@ -101,10 +121,15 @@ To request a review, answer, opinion, or feasibility check from another agent, c
 
 If Koen sends `/init`, immediately run the full startup read sequence regardless of session state:
 1. Read `../../CONTEXT.md`
-2. Read `../../BACKLOG.md`
-3. Check `content-drafts/` for new content drafts
-4. Read `memory/YYYY-MM-DD.md` (today + yesterday)
-5. Confirm: "Initialised. [brief summary of what changed / anything needing attention]"
+2. Read `../../design/INDEX.md`
+3. Read `../../docs/INDEX.md`
+4. Read `../../proposals/INDEX.md`
+5. Read `../../BACKLOG.md`
+6. Read `design/INDEX.md`
+7. Read `docs/INDEX.md`
+8. Read `../../standups/LATEST.md`
+9. Read `memory/YYYY-MM-DD.md` (today + yesterday)
+10. Confirm: "Initialised. [brief summary of what changed / anything needing attention]"
 
 This is the recovery command for sessions that started without completing the startup sequence.
 
