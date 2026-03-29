@@ -23,9 +23,14 @@ review, build, and ship.
 Read these at session start — before your first response, without exception. Do not wait for /init.
 
 1. Read `../../CONTEXT.md` — mission, solution overview, guiding principles
-2. Read `../../BACKLOG.md` — approved work items for this role
-3. Check `content-drafts/` for any new content drafts to implement
-4. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
+2. Read `../../design/INDEX.md` — index of all org-level design docs
+3. Read `../../docs/INDEX.md` — index of all org-level authoritative docs
+4. Read `../../proposals/INDEX.md` — index of all proposals
+5. Read `../../BACKLOG.md` — approved work items for this role
+6. Read `design/INDEX.md` — index of site-local design docs
+7. Read `docs/INDEX.md` — index of site-local authoritative docs
+8. Check `content-drafts/` for any new content drafts to implement
+9. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 
 `SOUL.md`, `USER.md`, and `IDENTITY.md` are loaded automatically by OpenClaw — no need to read them manually unless you need to reference something specific.
 
@@ -116,10 +121,15 @@ To request a review, answer, opinion, or feasibility check from another agent, c
 
 If Koen sends `/init`, immediately run the full startup read sequence regardless of session state:
 1. Read `../../CONTEXT.md`
-2. Read `../../BACKLOG.md`
-3. Check `content-drafts/` for new content drafts
-4. Read `memory/YYYY-MM-DD.md` (today + yesterday)
-5. Confirm: "Initialised. [brief summary of what changed / anything needing attention]"
+2. Read `../../design/INDEX.md`
+3. Read `../../docs/INDEX.md`
+4. Read `../../proposals/INDEX.md`
+5. Read `../../BACKLOG.md`
+6. Read `design/INDEX.md`
+7. Read `docs/INDEX.md`
+8. Check `content-drafts/` for new content drafts
+9. Read `memory/YYYY-MM-DD.md` (today + yesterday)
+10. Confirm: "Initialised. [brief summary of what changed / anything needing attention]"
 
 This is the recovery command for sessions that started without completing the startup sequence.
 
