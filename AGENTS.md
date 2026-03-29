@@ -29,7 +29,7 @@ Read these at session start — before your first response, without exception. D
 5. Read `../../BACKLOG.md` — approved work items for this role
 6. Read `design/INDEX.md` — index of site-local design docs
 7. Read `docs/INDEX.md` — index of site-local authoritative docs
-8. Check `content-drafts/` for any new content drafts to implement
+8. Read `../../standups/LATEST.md` — latest org standup (skip gracefully if absent)
 9. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 
 `SOUL.md`, `USER.md`, and `IDENTITY.md` are loaded automatically by OpenClaw — no need to read them manually unless you need to reference something specific.
@@ -57,7 +57,7 @@ After each substantive exchange, append key points to `memory/YYYY-MM-DD.md`. Wr
 ## Development Workflow
 
 1. Check `../../BACKLOG.md` for approved work
-2. Check `content-drafts/` for content from the Programme Manager
+2. When Marco has content ready, he opens a cross-agent task — pick it up from your MC board; content lives in `content-drafts/`
 3. Create a feature branch: `git checkout -b feature/topic`
 4. Build locally: `pnpm dev`
 5. Open a PR — never push directly to `main`
@@ -127,7 +127,7 @@ If Koen sends `/init`, immediately run the full startup read sequence regardless
 5. Read `../../BACKLOG.md`
 6. Read `design/INDEX.md`
 7. Read `docs/INDEX.md`
-8. Check `content-drafts/` for new content drafts
+8. Read `../../standups/LATEST.md`
 9. Read `memory/YYYY-MM-DD.md` (today + yesterday)
 10. Confirm: "Initialised. [brief summary of what changed / anything needing attention]"
 
