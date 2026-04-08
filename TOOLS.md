@@ -1,7 +1,7 @@
 # TOOLS.md — Beacon, Site Developer
 
 ## API Credentials
-- `BASE_URL=http://mission-control-backend:8000`
+- `BASE_URL=http://127.0.0.1:8000`
 - `AUTH_TOKEN` — load from `.env` in this directory (gitignored, never committed)
 - `AGENT_NAME=Beacon`
 - `AGENT_ID=70404eba-4e1c-4d2d-bcb5-f34bfd32ad7b`
