@@ -38,6 +38,19 @@ Read these at session start — before your first response, without exception. D
 
 ## Memory
 
+
+### 📍 Where MEMORY.md lives — do not overthink this
+
+MEMORY.md is a **plain file on disk** at your workspace root (same directory as AGENTS.md).
+
+- **Write it directly** — use the write/edit tool on the file. That is all.
+- OpenClaw reads it from disk at session start as project context. No git, no special path.
+- **Do not** write to any backup location, identity repo, or agent-identities path.
+- **Do not** wait for the nightly backup before updating it — write now, backup picks it up at 03:00 UTC.
+- The nightly backup is a one-way push (disk → GitHub). It is not a source you read from at runtime.
+
+If you can write `AGENTS.md`, you can write `MEMORY.md`. Same location, same mechanism.
+
 After each substantive exchange, append key points to `memory/YYYY-MM-DD.md`. Update `MEMORY.md`
 with durable facts that should survive across many sessions.
 
@@ -103,6 +116,8 @@ Send Koen a message in your own Telegram group:
 
 > 📨 **For [AgentName]:** [your message — self-contained, include all context the recipient needs]
 
+This relay message **must be a separate, standalone message** — never embedded inside another message. Koen forwards by tapping a single message; mixing it with other content makes that impossible.
+
 Koen reads it and forwards it manually. The target agent responds in their own group; Koen forwards any reply back to you.
 
 **Do not create MC board tasks for cross-agent communication.** That mechanism is reserved for a future phase.
@@ -151,3 +166,13 @@ Write an output file for every substantive response — immediately after delive
 `/home/node/workspace/skills/telegram-table/scripts/render_table.py`
 Use plain bullets for simple lists where layout doesn't add clarity.
 
+
+## Knowledge Graph
+
+Before starting any cross-codebase task (reading files in another agent's repo,
+reviewing a PR that spans Engine + Console, writing architecture docs), read:
+
+  /home/pi/idea/graphify-out/GRAPH_REPORT.md
+
+This gives you current structural context without reading raw source files.
+Do not read this file on every session start — only when doing cross-codebase work.
