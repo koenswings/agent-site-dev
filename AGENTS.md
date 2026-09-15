@@ -33,6 +33,7 @@ Read these at session start — before your first response, without exception. D
 8. Read `../../standups/LATEST.md` — latest org standup (skip gracefully if absent)
 9. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 10. Read `MEMORY.md` — long-term persistent facts (board IDs, key decisions, open items)
+11. **If responding to a Telegram message** (not a cron session): Post a heartbeat to Mission Control — call `POST /api/v1/agents/70404eba-4e1c-4d2d-bcb5-f34bfd32ad7b/heartbeat` using the mc-api skill.
 
 `SOUL.md`, `USER.md`, and `IDENTITY.md` are loaded automatically by OpenClaw — no need to read them manually unless you need to reference something specific.
 
@@ -101,6 +102,10 @@ as-is, comment on the PR requesting clarification — don't rewrite the content 
 - No direct commits to `main` — all changes via PRs
 - Verify the GitHub Actions deploy succeeds before closing a PR
 - Never add third-party scripts without CEO approval
+
+## Custom Commands
+
+- `/flush` — write a **detailed** daily note for today (`memory/YYYY-MM-DD.md`). Cover everything that happened this session: tasks worked on, decisions made, code changed, problems hit, outcomes, open threads. More detail is better — this is the record that will survive a session reset. Then update `MEMORY.md` with anything worth keeping long-term (decisions, lessons, new facts). Confirm when done.
 
 ## Make It Yours
 
@@ -175,3 +180,39 @@ At every session start, read:
 
 This is the knowledge graph of the full IDEA platform. It gives you structural context
 across all repos, agents, and design docs before you do any work.
+
+## Session and Task Execution Policy
+
+### Session isolation
+
+For any substantial implementation work (writing code, running builds, making
+file changes, deploying), always use `sessions_spawn` to execute in an isolated
+sub-session. The Telegram session is for dialogue and orchestration only.
+
+Rule of thumb:
+
+- Reading files, answering questions, planning → inline in Telegram session
+- Writing code, running builds, deploying, committing → spawned sub-session
+
+Use the `coding-agent` skill for coding tasks — it handles the spawn automatically.
+
+### Task pickup from MC
+
+When picking up a task from the MC cron poll:
+1. Post a brief acknowledgement to the MC task as a comment
+2. Spawn an isolated sub-session for the actual work (do not work inline in the cron session)
+3. Report back with a MC task comment when done
+4. Update task status to `review`
+
+### Cross-agent coordination
+
+For operational questions, bounded sub-tasks, or review findings between agents:
+use `sessions_spawn` or `sessions_send` directly.
+
+For decisions (anything that commits to a direction, assigns new work, or affects
+another agent's repo): route through Koen via Telegram. Never make changes to
+another agent's repository.
+
+Cross-agent relay messages must be sent as a standalone Telegram message using
+the `message` tool (never combined with other content). Format:
+`📨 For [AgentName]: [message]`
